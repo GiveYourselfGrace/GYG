@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Am I Carrying Too Much? — Give Yourself Grace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F3F6F5;--slate:#2C3A47;--slate-lt:#4A6070;
+  --amber:#D4A373;--amber-lt:#EDD5B3;--amber-bg:#FBF3E8;
+  --amber-b2:#F0E0C4;--amber-b3:#E8CEAA;
+  --sage:#7A9E8E;--sage-lt:#B2CBBF;
+  --cream:#F9F7F1;--white:#fff;--grey:#8A9BAA;
+  font-size:16px;
+}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);color:var(--slate);
+  min-height:100vh;display:flex;flex-direction:column;
+}
+
+/* ── Chrome ─────────────────────────────────── */
+.top-bar{
+  background:var(--slate);padding:12px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:4px solid var(--amber);
+  position:sticky;top:0;z-index:50;
+}
+.top-bar img{height:38px;filter:brightness(0)invert(1);opacity:.9}
+.top-bar .brand{
+  font-family:'Lora',Georgia,serif;font-style:italic;
+  font-size:1rem;color:var(--amber-lt);
+}
+.bot-bar{
+  background:var(--slate);border-top:3px solid var(--amber);
+  padding:12px 40px;text-align:center;
+  font-size:.78rem;color:var(--amber-lt);
+  font-family:'Inter',sans-serif;font-weight:300;
+  margin-top:auto;
+}
+
+/* ── Page wrapper ───────────────────────────── */
+.page{
+  max-width:780px;margin:36px auto;padding:0 24px 48px;
+  width:100%;
+}
+
+/* ── Title block ────────────────────────────── */
+.eyebrow{
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber);
+  display:block;text-align:center;margin-bottom:10px;
+}
+.page-title{
+  font-family:'Lora',Georgia,serif;
+  font-size:clamp(1.7rem,4vw,2.4rem);
+  color:var(--slate);text-align:center;
+  line-height:1.25;margin-bottom:10px;
+}
+.amber-rule{
+  width:180px;height:2px;background:var(--amber);
+  border-radius:2px;margin:12px auto 14px;
+}
+.subtitle{
+  font-family:'Lora',Georgia,serif;font-style:italic;
+  font-size:1rem;color:var(--sage);text-align:center;
+  max-width:580px;margin:0 auto 28px;line-height:1.6;
+}
+
+/* ── Form fields ────────────────────────────── */
+textarea,input[type=text]{
+  width:100%;background:var(--amber-bg);
+  border:1.5px solid var(--amber);border-radius:8px;
+  padding:12px 14px;font-family:'Inter',sans-serif;
+  font-size:.97rem;color:var(--slate);line-height:1.65;
+  resize:vertical;outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+textarea:focus,input[type=text]:focus{
+  border-color:var(--sage);
+  box-shadow:0 0 0 3px rgba(122,158,142,.18);
+}
+textarea::placeholder,input::placeholder{
+  color:var(--amber-b3);font-style:italic;font-size:.88rem;
+}
+
+/* ── Checkbox ───────────────────────────────── */
+.cb-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 14px;border-radius:7px;margin-bottom:4px;
+}
+.cb-item:nth-child(odd){background:var(--cream)}
+.cb-item:nth-child(even){background:var(--amber-bg)}
+.cb-item input[type=checkbox]{
+  width:18px;height:18px;min-width:18px;margin-top:2px;
+  accent-color:var(--amber);cursor:pointer;
+  border:1.5px solid var(--amber);border-radius:3px;
+}
+.cb-item label{font-size:.97rem;line-height:1.55;cursor:pointer}
+
+/* ── CTA button ─────────────────────────────── */
+.cta-btn{
+  display:block;width:fit-content;
+  margin:28px auto 0;padding:14px 36px;
+  background:var(--amber);color:var(--slate);
+  font-family:'Inter',sans-serif;font-weight:700;
+  font-size:1rem;border:none;border-radius:10px;
+  cursor:pointer;text-align:center;text-decoration:none;
+  box-shadow:0 4px 16px rgba(212,163,115,.35);
+  transition:background .18s,transform .15s,box-shadow .18s;
+}
+.cta-btn:hover{
+  background:var(--amber-b3);
+  transform:translateY(-2px);
+  box-shadow:0 6px 22px rgba(212,163,115,.45);
+}
+
+/* ── Utility ─────────────────────────────────── */
+.card{
+  background:var(--cream);border:1.5px solid var(--amber-b3);
+  border-radius:10px;padding:18px 20px;margin-bottom:8px;
+}
+.card-amber{background:var(--amber-bg)}
+.section-label{
+  font-family:'Inter',sans-serif;font-weight:600;
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:8px;display:block;
+}
+.q-label{
+  font-weight:600;font-size:.97rem;
+  color:var(--slate);display:block;margin-bottom:4px;
+}
+.q-hint{
+  font-size:.85rem;color:var(--sage);margin-bottom:8px;
+  font-style:italic;line-height:1.5;display:block;
+}
+.note{
+  font-size:.88rem;color:var(--slate-lt);
+  line-height:1.6;font-style:italic;
+}
+.slate-box{
+  background:var(--slate);border-radius:10px;
+  padding:18px 24px;margin-top:20px;
+}
+.slate-box p{color:var(--cream);font-size:.95rem;line-height:1.6;margin:0}
+.slate-box strong{color:var(--amber-lt)}
+@media(max-width:600px){
+  .top-bar{padding:10px 18px}
+  .page{padding:0 14px 40px;margin:20px auto}
+}
+@media print{
+  .top-bar{position:static}
+  .cta-btn{display:none}
+}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:20px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.score-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:16px 0}
+@media(max-width:560px){.score-grid{grid-template-columns:1fr}}
+.score-card{
+  background:var(--slate);border-radius:8px;padding:14px 16px;
+}
+.score-card .range{
+  font-family:'Inter',sans-serif;font-weight:700;
+  color:var(--amber);font-size:.82rem;display:block;margin-bottom:6px;
+}
+.score-card p{color:var(--cream);font-size:.82rem;line-height:1.5;margin:0}
+.counter{
+  text-align:center;padding:14px;
+  background:var(--amber-b2);border-radius:10px;
+  font-family:'Lora',serif;color:var(--slate);
+  font-size:1rem;margin-bottom:16px;
+}
+.counter span{font-weight:700;color:var(--amber);font-size:1.3rem}
+</style>
+</head><body>
+<header class="top-bar">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAB4CAYAAACDziveAAAS00lEQVR4nO2dedBdtXmHH2OMAYPBhIDLZrc1wyabYQgGRCaYkCCg7SSAIawlUFYDrVtanKStawyUDEkIYJYMS8ISoGEtNCwiHQIkKIQGsykJW8HGJJSBsNsBr/1DOnzy8d2/e+499973mWF8Fh1J51z0+17plV6NQBCEtqO0mdvsM97Z2UXURajOWt2ugCAIQrcQARSENtOK9Tec54TWEQEUBGFgEQEUhDYyXCtOrMDOIgIoCMLAIgIoCG2iXdabWIGdQwRQEISBRQRQENpAu602sQIFQRAEQRAEQRAEQRAEQRAEQRCElhnR7QoIQj+jtDmhXhrv7NWdqIuwJgMjgEqbg4DTgT8DVgHvAbcAl3hnF8c0q7yzI5Q2Xwe28s6eViGfrwBHeGe/rLRZBSzMJdnbO5u/JgwIjQhePUQQO8fa3a5AJ1DaXARMBs70zj4Vr40HZgK/UNrs6519M3nkBmC+0mamd3ZZLrujge9nJ97ZicXVXOgV2iF8+bxECIun7wVQaTMd+AwwzTu7PLvunf0/4GtKm5eAacCtyb3XlDZPAwcAdyd5fTrmdUhnai+UnXYKX7W8RQiLYxBWgpwBzEnFL8U7e7V39tYKt64jWHsphwO3eWeXtrmOQg9SpPh1o5xBpO8tQGBn4PHsRGlzAHBFLs1G3tlxuWt3ABcqbcZ6Z9+P144BZqSJlDYLktOHvbPHtqXWQqnptCgpbU4QS7D9DIIAroZ39j5gYnautNkYeKlCuiVKm3uA6cD3lTbbARt4Z3+VSzcx/6zQ33TLIhMRbD+D0AV+Bpha4/7uwBNV7qXd4GPiuSAIfcIgCOClwGylzcj8jXhtNnBJlWcfBiYobbYGjgB+WFgthZ6g2+Nx3S6/3+h7AfTO3gI8DdyrtJmSXY9d2nuAn3tn76ny7CrgRuBy4CXv7O86UGVBEDrEQIwBemfPUNocClystPlTYCXwGnCRd/aOOo9fD/wra3qEgTWcICAToQWhZxiYlSCCkKeVZWpl6IK2UidxnlRGBFAYGMogXmVBBDEgAij0PSJ81Rl0IRQBFPoWEb7GGVQh7HsvsDCYiPg1x6B+LxFAoe8Y1MY8XAbxu4kACn3FIDbidjJo308EUBCEgaV0ThClzTrAc8BB3tmnk+u7Aj8Ctk9DW8UIzacBWxPe51XgMu/sj5I0q7yza7xrej2J7rwKWAH8BDjLO/tBvD+esKxud8JE6p8AM72zH+aeT9nbO7uwVvkVnjnJO/tAnc8kVGDQrJciGRSnSOlWgnhnlyptziWs0U0Dj84G5ubE7wpCZJdTvLO/idcmE8JY7eOdPaXJsifGPEYC3wYuBE6Mt68DHgIOBUYD18T7J+Wfb6VMoT9oxyRlEfLOUToBjFwHnKW0meydfVZpszOwLWFdLgBKm8OBHYHPe2dXZNdj+gOAh5Q2X0ktwUbxzq5Q2swFXmBIAPcGDo7rgz9S2swE9mnx/YQBYVAsqV6llGOAUdDOJqzBJf57dip0hG5v/lr2/PL4/BqbGjXB6Nz5K8C+SRlvxkALgiD0KGW1ACGM931NaXMYMImwg1vKFOBXazw1xOMxTdMobcYSusBpmUcBt8Yxx1uB+72zH+WeW5CcNhQdOvfMnd7Zv2+lzoIgNE9pBdA7u1JpM4cgQtNj17MZmk2fidEoYAxwJUMWKN7Z+TGE1ucIUaLnKW2O9c4+mKSZ2GyZMgbYPryzV3dz/Kxd3d1+eY9eoJRd4Azv7J3A2t7ZuyrcfhbYtcbjU2MagCVKm/XSm/F8ca68iYTtM98HLvbOfpy7v9w7+6B3dgZwPGvuLSIIQg9RagGsw+WESM9rvEMS6fnyeOkFgrCl7AS8mH/WO/s28F3ggiS/dZQ21ytt0nHBxwhTb4QS0S3rpd3l9st7lJ2eFUDv7E0EYbtbabN9dl1psyNwL/C8d/bmePli4CKlzRYxzeaEKSwXVcn+MmCq0mavWNZSYAIwR2mzVhTdWYDM1yshnW7ERZXXL+9RZko3ETpPtUnEyf2jgFOBLQnv8xpwhXf2xly6kwh7BG8AfAjM885eWa0cpc0hwD8Dn4njkeOBecBehPFFB8zwzr6ZPU+NidC5e/O8s9+p927C8OjEOFonRKNf3qOMSOMT+p4iBKQbgtEv71EmRACFgaEdAlIGweiX9ygDIoDCwNIve2n0y3sIgiAIgiAIQvFIF1gQCkZp81i1e97ZPTpZF2F1RAAFoSBqCV8eEcLu0LAANvNjCr1JPzTCMjgEhtNWiv4NyvB9yoQIoPAJvSiAZZsS0o520s7foWzfp2yIAAqf0EsCWMZJwe1sI8P9Lcr4fcqIjAEKPUVZl4UVYSC0IoJl/T5lpWeDIQiDR6di5PXqnhzyfZpHBFDoCTrd6Jopr6jhoWbyLfP3KTMigELp6VZj65VGLt+ndUQABWEYFO0cFOdjsYgACqWm21ZGt8uvR7fr1+3yh4sIoCAIA4sIoCAIA4sIoCAIA4sIoCAIA0tXV4LEjcYnA1sRNiN/D3gDWAQ84Z1d1sXqCSWhzJuEd8JLW29FSJm/T9lZu9MFKm02I+zOdiyr76u7AhiZnH+otHkEuBO4mbBX74nA33pn53WouoJQE+/sHkWKYC+tz+5FOtYFVtqMiFtTPg/8C7AFcDcwHdgGGA2sB2wLzIjpDgSuAhYA2f8IH3SqzkI5kE3CayPfp3U60gVW2qxHsORMvPQMcIJ39n/qPHc68G2COGZM987eXkhFhVLTya5es427DMEQyvx9ykrhFqDSZn3gHobEzwK71xM/AO/spcChhI3IM8QCHFA61eh6tXHL92mewi1Apc0tBBEDeBgw3tmPm8zju8DMeKq9s79oXw2FXqSM8e4kHmDvUagAKm2OBG6Mp+8AU7yzr7WQz5bAQoKTZLJ31revlkIvU7aIxxIRurcoTACVNhsSnBebxEsneWevGkZ+9wH7AxO9swuHX0OhHynDnheyJ0jvUOQ0mBMZEr/XgOuGmZ8nCGDFMUClzRjgHOAIYGPgIeAY7+xbSZq1CNNvTgF2At4EzvfOXlklz7UInuiDgd2ACQRP9XvAH4CXgfnAXd7Zx+u9gNJmXeA4wpDAFGBszGc+8APv7G318oj5jI51OhrYDtgS+Aj4NXAHcIV39o+N5NVvlKHxZiJWxl3hyvB9ykQhFqDSZiTwCkPz/L7unf3mMPM8HZgHjPbOLs3dG0MYX3wbeB3463jrYu/szJhmNHA78BcVst/FO/tULs/dgGsIE7WfBR4Bfg+MI4jX54B1Y/LZ3tlz6tRfETzhkwjCexfwKmES+HTCH4t7gYNrjZEqbaYCNwF/Tvij8GPCHMr9gV1jsmeAz3tn/1CrTkJnkH2By0tRFuAerD7J+a7hZhg9wpdWuX0O8BJwZDyfDqxPEIWMqwjW3PeAXwI/SO5tATyVnShtZhKm3ywHvgpc751NPdEobX4KTIunC2rVXWnzWeB+wmqXm4GTvbMfJPfnAI/F+l0CnFwln/0JcydHAd8EvpHVK+ZxL/BFgkCfDZxeq15CZxCRKy9FTYMxyfFC7+xvCyoHpc0E4Hjg77yzK72zK4F34+3xMc104JiY5lTv7LXABcBi4L+AB5L8TiasOhkBHOSdvS4vfpENk+NXatRvC+A2gvj9lNAtX60b7519nWDJARyvtNm0Qj7bA7cQxO9+EvGLeSwHvpM8cnC1OgmCECjKApyWHBftsT0KsN7ZN5JrWdd0lNJmbeBbwM3pEjrv7CxgVpqR0mYKQ1bmpd7Z+2qUu1lyvKBGuguBzYGVwGne2RVV0n0p/rs2YTXMW7n7FxNEdxVwRhVRTusxXmmzVvyDIFSgXxwC/fIe3aAoAZyUHFe1jtrEb4FHs5M41pc5X35PcIpsCpzZQF6XEb7JH4E51RLFlS1bxdNlsZxK6aYAh8XTB+tYwu8SnBkrCGODaT7TgP3i6QPe2Zeq5LFjcvyGiN/qtDIlJP9MGYSkX96jDLRdAKMAjU8uVRSHBvIZB2xUI8kK7+wi7+yduevp2OMrhHXFV8VuZq3ypgGfjac3e2ffqZF8O4YcSItqCM2JSbp6y/cOI4w3/sw7+7vcveOS4x9TgbjiZk5yabhe91KhtJnrnZ3d4rNtmxSc5dUNASnLewzntygbRViA41jdu7y8xXzOJYhXNRYRgijkSQVwGTAVOLyB8lKRqee0mZocv1opgdJmBMEZk/FopXQZ3tnfAGdVyGckcFBy6WcV0kwkjA9OiZf+mxoWbK+htJmb/dtMwytybWwnhbCM79EvIliEE2Rk7nzdiqnqczWh4R9EELKM5QSxmlTpIYa6pgB7Ag/Xmzgd5/tlIrOSMIewFnsmx9XynsSQJbySEN2mFXZgyOGyCnguu6G02VJpcwFhms5uwFKCc+dA7+xHLZbXF/TLJuFle4/sj1G/UIQALsmdj6+Yqg7e2Se9s/9J8NKOSm7N885em58LmLBlcjyOMO2kHjsyJDILvbPv10m/X3JcTQB3SY7fqFHfekxJjt8BjNJmjtLmUYIV/E+ESdAXAtt7Z2f1UyDZfINrpAH2yybhZX+PfhDDtgtgHDtLVyHsNMwsN8id31on/Ra581qe3Ixdk+NqDgYAlDa75Mqo2AVmdSEeTgSb1Nu8CaF7/g8ES/gCYB/gT7yzZ3pni3Y4dZRWGli/bBJexveo9Hv0uggW5QX2hC4ZwK5Km3WGYQGNTY5XAk/WSZ8Kz/MNBl9IBe3tOmmPIAj8evF8UZV0ab2rTX1phNQRtBDYq4KTZKDol/GnfqGXf4+iJkKnA/UbAF8YRl7phOO3GhjbSsXMNVjGuOT4w2qJokPiaCCNZVjNy51awXkrthnSZXGjBkX86lkWVayRvtgkvIzv0euWXjWKEsD/yJ3X8ubWIxXA9xpInwrgEw2WsX5yPKpqqjBVZQyrd5OrCWBqSW4eHS11iWuGU9IJ0eOid7mRfFp1PnWdfm1s/Uyv/maFCGCM9pwGLT1QabNntfR1GJMcV7XOEjZPq9JgGYuT44pzD6PwzAKuZWiqzUqCYyJLs5EKmz5BsrYYWIcwd7AmSpttgaeVNn+TXH4mOV6P6t7vNJ9NgZeVNofVS9vL9Gqj6zUa/c69+HsUGQ7rTODnBJEdAVyjtNk9vw62AdLuY81nYwzCdP+QlxssI3VkTKiS5jhge+CvCCH+AT7MLUmbAexMmHf4NMF6y9b1fomwaqUW/07YFjT1XM8nRI/5dDzfB3ixTj6XEcRyjTmDZafZRlT28SdZplZuCtsTJIat/7fk0g7AbXHFQjOkAljPAtwkd97oKpTUWp0cw2t9gtJma0L0lfO8s4uAT+UziOODxwM3AMSpKGmcwZn5fHPPzwAOAU71zn4ylSgGOUgbyIxa3WmlzXmEeIMn1Vv9UjZ60YLIo7Q5If2vqGc6RSt/kIqqSxEUuimSd/ZcVo9Qsh/wiNKm7tQYpc1Ipc1XCVZRRj0BTMcLl9QIPJCv53yGuqyZoyOrx6cIIaj+Fzg/Xs7G98bGpX8QuscLvLOZdQhwHiFIKYSu+Z1Km9UcIkqb0fF/mksJcRMrrUI5nyErdWfgW3kRVNpsprS5CfgGMMs7W2+6UN+QNTqxpNpDG/ZG6RkRLHxjdO/sPyptniTEuduEMOfuSaXNbYTAnr8kdBVHELp52wL7EkQoG+9aToicXG3KScY6yXGzEZGPI4Sr2hi4KIr0YkIE6deBv4zWGIS5hZmz4galzTJgb2CvNEPv7BKlzRcI64A1IVbfAqXN7QRB24bQpR4DHOudvaFSxbyzHyhtvkjYUW8iYR7gfkqbBwiOIUWIJbgUONI728jk71LRS41mUBjOb1L2oYmMjuwLDMFBAJxKiNa8Q+52Zqlly+jeJyxHe4CwhvbXjaxuiJOU58fTxd7ZpqafKG0mAXMJluqGhOVrPyRElv44STeWEFh1f4Ij5F6C1VWxyxkdKIcQArZOJQj9EuAFwnjiZY1Eb1YhCs2pwJcJ33BjQhSZ52I+3/POvtvMO5eBdolf1uDK1o3sJVLrb7i/iwhgFZQ22xC6chMYmjD8LmHvkBeAFxvtvgq9TzutPxHB1mmn+CV5lloEuyKAgpDR7q5v2uBEBBsnP+5XxB+lMiICKHSNosb98g1OhLA6lRweRfwuZRXBwp0ggtAOhtOAskYuQjhELU9vkzEXe9p5JRag0BXK4CVsZZJyGUS0lTp1e4pQGX7vSogACkITlFEAhdYpdCK0IAhCmREBFARhYBEBFIQm6Hb3s9vl9xsigIIgDCwigILQJN2ywsT6az8igILQAp0WIxG/YhABFIQW6ZQoifgVh8wDFIQ2UMT8QBG+4hEBFIQ20g4hFOHrHCKAglAgvbBMTRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQSgJ/w+SARr+D3tfGAAAAABJRU5ErkJggg==" alt="Give Yourself Grace">
+  <span class="brand">Give Yourself Grace</span>
+</header>
+<main class="page">
+  <span class="eyebrow">FREE SELF-CHECK — GIVE YOURSELF GRACE</span>
+<h1 class="page-title">Am I Carrying Too Much?</h1>
+<div class="amber-rule"></div>
+<p class="subtitle">Read each statement. Check the ones that feel true for you right now. Be honest — this page is just for you.</p>
+
+  <div class="counter">You've checked <span id="count">0</span> of 12</div>
+
+  <div class="grid"><div class="cb-item">
+  <input type="checkbox" id="s1" onchange="updateCount()">
+  <label for="s1">I feel tired even after a full night of sleep.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s2" onchange="updateCount()">
+  <label for="s2">I often say "I'm fine" when I'm not.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s3" onchange="updateCount()">
+  <label for="s3">I handle most things alone because it's easier than explaining.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s4" onchange="updateCount()">
+  <label for="s4">I feel guilty when I take time for myself.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s5" onchange="updateCount()">
+  <label for="s5">I haven't asked for help recently — even when I needed it.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s6" onchange="updateCount()">
+  <label for="s6">I feel like if I stop, everything will fall apart.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s7" onchange="updateCount()">
+  <label for="s7">My to-do list feels impossible, but I keep adding to it.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s8" onchange="updateCount()">
+  <label for="s8">I say yes to others when I really want to say no.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s9" onchange="updateCount()">
+  <label for="s9">I feel resentful of the responsibilities I've taken on.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s10" onchange="updateCount()">
+  <label for="s10">I can't remember the last time I felt truly supported.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s11" onchange="updateCount()">
+  <label for="s11">I believe asking for help means I'm weak or a burden.</label>
+</div>
+<div class="cb-item">
+  <input type="checkbox" id="s12" onchange="updateCount()">
+  <label for="s12">I'm running on fumes but keep pushing anyway.</label>
+</div>
+</div>
+
+  <div>
+    <span class="section-label">What Your Score Means</span>
+    <div class="score-grid">
+      <div class="score-card">
+        <span class="range">1–4 Checked</span>
+        <p>You're managing well — but watch for early signs of overwhelm. Small asks now prevent big crashes later.</p>
+      </div>
+      <div class="score-card">
+        <span class="range">5–8 Checked</span>
+        <p>You're carrying a heavy load. It's time to start asking for help — and you deserve to receive it.</p>
+      </div>
+      <div class="score-card">
+        <span class="range">9–12 Checked</span>
+        <p>You're doing too much alone. The <em>Give Yourself Grace</em> workbook was made for exactly where you are right now.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slate-box" style="text-align:center;margin-top:24px">
+    <p style="margin-bottom:4px"><strong>Ready to stop carrying it all alone?</strong></p>
+    <p style="margin-bottom:14px">The <em>Give Yourself Grace</em> workbook walks you through asking for help — step by step, chapter by chapter.</p>
+    <a href="#" class="cta-btn">Get the Full Workbook →</a>
+  </div>
+</main>
+<footer class="bot-bar">
+  giveyourselfgrace.com &nbsp;·&nbsp; Free Resource — Share freely with someone who needs it
+</footer>
+<script>
+function updateCount(){
+  const n = document.querySelectorAll('input[type=checkbox]:checked').length;
+  document.getElementById('count').textContent = n;
+}
+</script>
+</body></html>
